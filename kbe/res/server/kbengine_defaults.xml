@@ -150,7 +150,7 @@
 				</messages>
 				<bytes>
 					<internal>	0			</internal>
-					<external>	2048		</external>
+					<external>	0		</external>
 				</bytes>
 			</receive>
 		</windowOverflow>
