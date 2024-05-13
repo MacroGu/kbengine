@@ -10,7 +10,6 @@
 #include "Runtime/Sockets/Public/Sockets.h"
 #include "EncryptionFilter.h"
 
-#include "IPAddressAsyncResolve.h"
 
 
 /*

@@ -8,6 +8,9 @@
 #include "Interfaces.h"
 #include "KBEngine.h"
 
+#include "IPAddressAsyncResolve.h"
+
+
 namespace KBEngine
 {
 
