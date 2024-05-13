@@ -3,6 +3,9 @@
 #include "KBEnginePlugins.h"
 #define LOCTEXT_NAMESPACE "FKBEnginePluginsModule"
 
+
+DEFINE_LOG_CATEGORY(LogKBEPlugin)
+
 void FKBEnginePluginsModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module

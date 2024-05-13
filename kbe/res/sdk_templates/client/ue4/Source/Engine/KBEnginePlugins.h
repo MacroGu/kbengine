@@ -3,9 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ModuleManager.h"
+#include "Modules/ModuleManager.h"
 
-class FKBEnginePluginsModule : public IModuleInterface
+DECLARE_LOG_CATEGORY_EXTERN(LogKBEPlugin, All, All);
+
+
+class KBENGINEPLUGINS_API FKBEnginePluginsModule : public IModuleInterface
 {
 public:
 

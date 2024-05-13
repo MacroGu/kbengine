@@ -16,7 +16,6 @@
 */
 class KBEngineApp;
 
-
 UCLASS(ClassGroup = "KBEngine", blueprintable, editinlinenew, hidecategories = (Object, LOD, Lighting, TextureStreaming), meta = (DisplayName = "KBEngine Main", BlueprintSpawnableComponent))
 class KBENGINEPLUGINS_API UKBEMain : public UActorComponent
 {
