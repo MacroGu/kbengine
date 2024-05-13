@@ -16,7 +16,7 @@ ClientSDKUpdater::ClientSDKUpdater()
 {
 	pSdkFileStream = nullptr;
 	sdkPath = FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir());
-	sdkPath += "kbengine_ue4_plugins";
+	sdkPath += "KBEnginePlugins";
 	FPaths::NormalizeDirectoryName(sdkPath);
 	sdkTempPath = sdkPath + "_temp";
 	sdkBakPath = sdkPath + "_bak";
