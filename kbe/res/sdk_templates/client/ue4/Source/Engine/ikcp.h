@@ -9,29 +9,6 @@
 // + Lightweight, distributed as a single source file.
 //
 //=====================================================================
-/*
-MIT License
-
-Copyright (c) 2017 Lin Wei (skywind3000 at gmail.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
 #ifndef __IKCP_H__
 #define __IKCP_H__
 
@@ -248,7 +225,7 @@ typedef struct IQUEUEHEAD iqueue_head;
 
 
 //---------------------------------------------------------------------
-// WORD ORDER
+// BYTE ORDER & ALIGNMENT
 //---------------------------------------------------------------------
 #ifndef IWORDS_BIG_ENDIAN
     #ifdef _BIG_ENDIAN_
@@ -271,6 +248,17 @@ typedef struct IQUEUEHEAD iqueue_head;
     #endif
 #endif
 
+#ifndef IWORDS_MUST_ALIGN
+	#if defined(__i386__) || defined(__i386) || defined(_i386_)
+		#define IWORDS_MUST_ALIGN 0
+	#elif defined(_M_IX86) || defined(_X86_) || defined(__x86_64__)
+		#define IWORDS_MUST_ALIGN 0
+	#elif defined(__amd64) || defined(__amd64__)
+		#define IWORDS_MUST_ALIGN 0
+	#else
+		#define IWORDS_MUST_ALIGN 1
+	#endif
+#endif
 
 
 //=====================================================================
@@ -321,6 +309,7 @@ struct IKCPCB
 	void *user;
 	char *buffer;
 	int fastresend;
+	int fastlimit;
 	int nocwnd, stream;
 	int logmask;
 	int (*output)(const char *buf, int len, struct IKCPCB *kcp, void *user);
