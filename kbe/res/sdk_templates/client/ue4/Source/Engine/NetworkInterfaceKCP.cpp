@@ -104,9 +104,12 @@ bool NetworkInterfaceKCP::_connect(const FInternetAddr& addr)
 	int32 sent = 0;
 	socket_->SendTo(s.data(), s.length(), sent, addr);
 
+	addr_ = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
 	uint32 ip;
 	addr.GetIp(ip);
-	addr_ = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr(ip, addr.GetPort());
+	addr_->SetIp(ip);
+	addr_->SetPort(addr.GetPort());
+
 	return true;
 }
 
